@@ -1,0 +1,43 @@
+{
+  "components": [
+    {
+      "label": "City",
+      "type": "textfield",
+      "id": "Field_0zkkpwa",
+      "key": "city"
+    },
+    {
+      "label": "Country",
+      "type": "textfield",
+      "id": "Field_0x7byut",
+      "key": "country"
+    },
+    {
+      "label": "Local Time",
+      "type": "textfield",
+      "id": "Field_1pp5i5n",
+      "key": "local_time"
+    },
+    {
+      "label": "Temperatur (Celcius)",
+      "type": "textfield",
+      "id": "Field_1kdj9j8",
+      "key": "temp_c"
+    },
+    {
+      "label": "Wind (mph)",
+      "type": "textfield",
+      "id": "Field_1ujkamh",
+      "key": "wind"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0aj10yt",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}

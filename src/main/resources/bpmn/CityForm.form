@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "label": "City",
+      "type": "textfield",
+      "id": "Field_1oxps34",
+      "key": "city",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_188f8zd",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}

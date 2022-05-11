@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_11ea1tu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <bpmn:process id="current-weather" name="Current Weather" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_3upo1vb">{
+  "components": [
+    {
+      "label": "City",
+      "type": "textfield",
+      "id": "Field_0zkkpwa",
+      "key": "city"
+    },
+    {
+      "label": "Country",
+      "type": "textfield",
+      "id": "Field_0x7byut",
+      "key": "country"
+    },
+    {
+      "label": "Local Time",
+      "type": "textfield",
+      "id": "Field_1pp5i5n",
+      "key": "local_time"
+    },
+    {
+      "label": "Temperatur (Celcius)",
+      "type": "textfield",
+      "id": "Field_1kdj9j8",
+      "key": "temp_c"
+    },
+    {
+      "label": "Wind (mph)",
+      "type": "textfield",
+      "id": "Field_1ujkamh",
+      "key": "wind"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0aj10yt",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_2par6ln">{
+  "components": [
+    {
+      "label": "City",
+      "type": "textfield",
+      "id": "Field_1oxps34",
+      "key": "city",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_188f8zd",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_10zny3i</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0vvzthe" name="Enter City">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_2par6ln" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_10zny3i</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dekc3c</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_10zny3i" sourceRef="StartEvent_1" targetRef="Activity_0vvzthe" />
+    <bpmn:serviceTask id="Activity_1vm3tsj" name="Check Current Weather From API">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="CheckWeather" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1dekc3c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0v7vrjr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1dekc3c" sourceRef="Activity_0vvzthe" targetRef="Activity_1vm3tsj" />
+    <bpmn:sequenceFlow id="Flow_0v7vrjr" sourceRef="Activity_1vm3tsj" targetRef="Activity_00fk6gt" />
+    <bpmn:endEvent id="Event_1crsaax" name="End">
+      <bpmn:incoming>Flow_030o8px</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_030o8px" sourceRef="Activity_00fk6gt" targetRef="Event_1crsaax" />
+    <bpmn:userTask id="Activity_00fk6gt" name="Check Details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3upo1vb" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0v7vrjr</bpmn:incoming>
+      <bpmn:outgoing>Flow_030o8px</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="current-weather">
+      <bpmndi:BPMNEdge id="Flow_030o8px_di" bpmnElement="Flow_030o8px">
+        <di:waypoint x="640" y="97" />
+        <di:waypoint x="682" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v7vrjr_di" bpmnElement="Flow_0v7vrjr">
+        <di:waypoint x="510" y="97" />
+        <di:waypoint x="540" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dekc3c_di" bpmnElement="Flow_1dekc3c">
+        <di:waypoint x="370" y="97" />
+        <di:waypoint x="410" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10zny3i_di" bpmnElement="Flow_10zny3i">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="270" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="185" y="122" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lty9lw_di" bpmnElement="Activity_0vvzthe">
+        <dc:Bounds x="270" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v57jr9_di" bpmnElement="Activity_1vm3tsj">
+        <dc:Bounds x="410" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1crsaax_di" bpmnElement="Event_1crsaax">
+        <dc:Bounds x="682" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="690" y="122" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ommdzt_di" bpmnElement="Activity_00fk6gt">
+        <dc:Bounds x="540" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

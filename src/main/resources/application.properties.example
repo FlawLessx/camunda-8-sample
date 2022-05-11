@@ -1,0 +1,12 @@
+weather.api-key=41e8c99e68b24ba0ad565212221005
+server.port=5111
+
+# Jika menggunakan SaaS Camunda
+zeebe.client.cloud.cluster-id=a28ada60-f0fa-41b8-84f9-0b903e5687c3
+zeebe.client.cloud.client-id=ewfHkdxlf4~2caeZx.4xXfPW39xZbisB
+zeebe.client.cloud.client-secret=LVZdKuO14X_OuZSRYONFHzrzJa_k2TOHFVEeY3RGwBozaco7jIq7R08IRWXYcQJN
+zeebe.client.cloud.region=bru-2
+
+# Jika menggunakan self-managed
+#zeebe.client.broker.gateway-address=127.0.0.1:26500
+#zeebe.client.security.plaintext=true
